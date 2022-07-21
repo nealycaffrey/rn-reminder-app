@@ -41,22 +41,12 @@ export default function App() {
   }
 
   const onChange = (event, selectedDate) => {
+    const currentDate = selerctedDate || date;
+    setShow(Platform.OS === 'ios');
+    setDate(currentDate);
     let today = new Date();
-    // console.log('today: '+ today);
     let count = Math.round((selectedDate.getTime() - today.getTime())/1000);
-    // console.log(count);
-    // console.log('selected date: ' + selectedDate);
-    // let difference = selectedDate - today;
-    // console.log('difference: ' + difference);
-    // console.log(selectedDate.getTime());
-    // console.log()
-    // console.log(new Date());
-    // console.log(event);
-    // const currentDate = selerctedDate || date;
-    // setShow(Platform.OS === 'ios');
-    // setDate(currentDate);
-    // console.log(currentDate);
-    // const schedule = selectedDate;
+    
     Notifications.scheduleNotificationAsync({
       content: {
         title: "reminder",
@@ -67,10 +57,6 @@ export default function App() {
         seconds: count,
       },
     });
-    // let tempDate = new Date(currentDate);
-    // let fDate = tempDate.getDate() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getFullYear();
-    // let fTime = 'Hours: ' + tempDate.getHours() + ' | Minutes: ' + tempDate.getMinutes();
-    // setText(fDate + ' (' + fTime + ')')
   };
 
   const showMode = (currentMode) => {
